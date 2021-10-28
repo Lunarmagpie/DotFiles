@@ -82,6 +82,7 @@ super + ctrl + {m,x,y,z}
 
 # focus the node in the given direction
 super + {Left,Right,Up,Down}
+	bspc config pointer_follows_focus true; \
 	set dir {west,east,north,south}; \
 	if [ (bspc query -N -d $desk -n .leaf | wc -l) = 0 ]; \
 		bspc monitor $dir -f; \
@@ -94,23 +95,30 @@ super + {Left,Right,Up,Down}
 			echo "not 1"; \
 			bspc node $dir -f; \
 		end; \
-	end
+	end; \
+	bspc config pointer_follows_focus false
 
 # Move in a certain direction
 super + shift + {Left,Right,Up,Down}
-	set dir {west,east,north,south}; bspc query -N @$dir && bspc node -s $dir || bspc node -m  $dir -f
+	bspc config pointer_follows_focus true; \
+	set dir {west,east,north,south}; bspc query -N @$dir && bspc node -s $dir || bspc node -m  $dir -f; \
+	bspc config pointer_follows_focus false
 
 # Rotate tree
 super + shift + {d,a}
-     bspc node @/ -C {forward,backward}
+     bspc node @/ -R {90,-90}
 
 # focus the node for the given path jump
 super + {p,b,comma,period}
-	bspc node -f @{parent,brother,first,second}
+	bspc config pointer_follows_focus true; \
+	bspc node -f @{parent,brother,first,second}; \
+	bspc config pointer_follows_focus false
 
 # focus the next/previous window in the current desktop
 super + {_,shift + }c
-	bspc node -f {next,prev}.local.!hidden.window
+	bspc config pointer_follows_focus true; \
+	bspc node -f {next,prev}.local.!hidden.window; \
+	bspc config pointer_follows_focus false
 
 # focus the next/previous desktop in the current monitor
 super + bracket{left,right}
@@ -122,24 +130,30 @@ super + shift + bracket{left,right}
 
 # focus the last node/desktop
 super + {grave,Tab}
-	bspc {node,desktop} -f last
+	bspc config pointer_follows_focus true; \
+	bspc {node,desktop} -f last; \
+	bspc config pointer_follows_focus false
 
 # focus the older or newer node in the focus history
 super + {o,i}
+	bspc config pointer_follows_focus true; \
 	bspc wm -h off; \
 	bspc node {older,newer} -f; \
-	bspc wm -h on
+	bspc wm -h on; \
+	bspc config pointer_follows_focus false
 
 # focus or send to the given desktop
 super + {_,shift + }{1-9,0}
-	bspc {desktop -f,node -d} '^{1-9,10}'
+	bspc config pointer_follows_focus true; \
+	bspc {desktop -f,node -d} '^{1-9,10}'; \
+	bspc config pointer_follows_focus false
 
 #
 # preselect
 #
 
 # preselect the direction
-super + ctrl + {h,j,k,l}
+super + ctrl + {Left,Down,Up,Right}
 	bspc node -p {west,south,north,east}
 
 # preselect the ratio
@@ -159,11 +173,11 @@ super + ctrl + shift + space
 #
 
 # expand a window by moving one of its side outward
-super + alt + {h,j,k,l}
+super + alt + {Left,Down,Up,Right}
 	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
 
 # contract a window by moving one of its side inward
-super + alt + shift + {h,j,k,l}
+super + alt + shift + {Right,Up,Down,Left}
 	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
 
 # move a floating window

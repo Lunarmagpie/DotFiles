@@ -177,7 +177,8 @@ content-foreground = ${colors.module-background}
 content-background = ${colors.secondary}
 content-padding = 2
 
-click-left = "rofi -show combi"
+click-left = "rofi -show powermenu -modi powermenu:~/.config/rofi/rofi-power-menu"
+click-right = "rofi -show combi"
 
 [module/times]
 type = custom/text
@@ -258,7 +259,7 @@ interval = 5
 date =
 # date-alt = " %Y-%m-%d"
 
-time = %I:%M
+time = %l:%M
 # time-alt = %H:%M:%S
 
 format-prefix = 
@@ -272,7 +273,7 @@ label = " %time% "
 [module/date]
 inherit = module/time
 interval = 5
-date = "%Y-%m-%d"
+date = "%b-%d-%Y"
 label = " %date% "
 
 [module/pulseaudio]
