@@ -4,7 +4,7 @@
 picom --experimental-backends &
 nitrogen --restore &
 lxqt-policykit-agent &
-nm-applet &
+clipcatd &
 
 setxkbmap -option caps:none
 xmodmap -e "keycode 66 = Multi_key"
@@ -13,10 +13,10 @@ xmodmap -e "keycode 66 = Multi_key"
 #Start polybar
 ~/.config/polybar/launch.sh
 #Get rid of gaps
-bspc config top_padding 2
+bspc config top_padding 25
 bspc config right_padding 2
 bspc config left_padding 2
-bspc config bottom_padding 27
+bspc config bottom_padding 2
 
 #Mouse warping
 bspc config pointer_follows_monitor true

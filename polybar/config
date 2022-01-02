@@ -19,27 +19,19 @@
 
 #COLOR SCHEME
 
-#7A7EBF
-#5B6ED9
-#364959
-#7297A6
-#E7F5F9
-
-# Dark Blue
-#5065F4
 
 [colors]
 #background = ${xrdb:color0:#222}
-background = #662C2527
-;background-alt = #007297A6
-background-module = #66E7F5F9
+background = #ffffff00
+;background-alt = #ffffff00
+background-module = #ffffff
 ;foreground = ${xrdb:color7:#222}
 foreground = #000
 foreground-alt = #000
-primary = #5065F4
-secondary = #5064f4
+primary = #FF9D18
+secondary = #FF9D18
 underline = #D984AC
-background-light = #D984AC
+background-light = #fffff
 alert = #bd2c40
 
 [config]
@@ -66,7 +58,7 @@ font-3 = "Hack Nerd Font:style=Bold:size=10;2"
 font-4 = "Hack Nerd Font:style=Bold:size=13;2"
 font-5 = "Hack Nerd Font:style=Bold:size=14;3"
 font-6 = "JetBrains Mono Nerd Font:style=Bold:size=14;5"
-font-7 = "Hack Nerd Font:style=Bold:size=15;5"
+font-7 = "Hack Nerd Font:style=Bold:size=15;4"
 
 background = ${colors.background-module}
 
@@ -76,9 +68,6 @@ offset-y = 0px
 override-redirect = true
 wm-restack = bspwm
 fixed-center = true
-
-bottom = true
-
 ;[bar/left]
 ;inherit = bar/modulebar
 ;width = 8.8%

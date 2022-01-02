@@ -183,3 +183,8 @@ super + alt + shift + {Right,Up,Down,Left}
 # move a floating window
 super + {h,j,k,l}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+
+# Clipboard
+super + v
+	clipcat-menu
